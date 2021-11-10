@@ -1,12 +1,20 @@
+from collections import deque
+
 result = -1
 
-def dfs(start_v, visited = []):
-	visited.append(start_v)
+def bfs(start_v):
 	global result
-	result += 1
-	for w in range(len(graph[start_v])):
-		if graph[start_v][w] == 1 and (w not in visited):
-			dfs(w)
+	visited = [start_v]
+	queue = deque()
+	queue.append(start_v)
+
+	while queue:
+		v = queue.popleft()
+		result += 1
+		for w in range(len(graph[v])):
+			if graph[v][w] == 1 and (w not in visited):
+				queue.append(w)
+				visited.append(w)
 
 
 N = int(input())
@@ -20,5 +28,5 @@ for i in range(M):
 	graph[m1][m2] = 1
 	graph[m2][m1] = 1
 
-dfs(1) # depth-first-search
+bfs(1) # depth-first-search
 print(result)
