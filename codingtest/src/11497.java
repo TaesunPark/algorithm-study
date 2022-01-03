@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Main{
+class Main1{
 
    public static int[] list;
 
