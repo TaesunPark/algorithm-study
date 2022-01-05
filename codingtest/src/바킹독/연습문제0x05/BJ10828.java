@@ -26,7 +26,7 @@ public class BJ10828 {
                     stack.add(cmdList[1]);
                     break;
                 case "pop":
-                    if(stack.size() == 0)
+                    if(stack.empty())
                         System.out.println("-1");
                     else{
                         System.out.println(stack.pop());
@@ -36,14 +36,14 @@ public class BJ10828 {
                     System.out.println(stack.size());
                     break;
                 case "empty":
-                    if(stack.size() == 0){
+                    if(!stack.empty()){
                         System.out.println("1");
                     } else{
                         System.out.println("0");
                     }
                     break;
                 case "top":
-                    if(stack.size() > 0)
+                    if(!stack.empty())
                     {
                         System.out.println(stack.peek());
                     } else{
