@@ -11,7 +11,7 @@ public class BJ1926 {
     static boolean[][] check;
     static int[] dX = {1,0,-1,0};
     static int[] dY = {0,1,0,-1};
-    static Queue<Node> queue;
+    static Queue<Node1> queue;
     static int count = 0;
     static int max = 0;
 
@@ -44,11 +44,11 @@ public class BJ1926 {
 
     public static void bfs(int x, int y){
         queue = new LinkedList<>();
-        queue.add(new Node(x,y));
+        queue.add(new Node1(x,y));
         int cnt = 0;
 
         while(!queue.isEmpty()){
-            Node node = queue.poll();
+            Node1 node = queue.poll();
             cnt++;
 
             for(int dir=0; dir<4; dir++){
@@ -58,7 +58,7 @@ public class BJ1926 {
                 if(check[nx][ny] || map[nx][ny] != 1) continue;
 
                 check[nx][ny] = true;
-                queue.add(new Node(nx, ny));
+                queue.add(new Node1(nx, ny));
             }
         }
 
@@ -67,10 +67,10 @@ public class BJ1926 {
 
 }
 
-class Node{
+class Node1{
     int x;
     int y;
-    public Node(int x, int y){
+    public Node1(int x, int y){
         this.x = x;
         this.y = y;
     }
