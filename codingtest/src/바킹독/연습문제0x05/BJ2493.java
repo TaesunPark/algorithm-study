@@ -4,28 +4,35 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.Stack;
 import java.util.StringTokenizer;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class BJ2493 {
 
     public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
 
         Stack<Node> stack = new Stack<>();
-
-        int n = sc.nextInt();
+        StringBuilder sb = new StringBuilder();
+        int n = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
 
         for(int i=1; i<=n; i++){
 
-            int m = sc.nextInt();
+            int m = Integer.parseInt(st.nextToken());
 
             if(stack.isEmpty()){
-                System.out.print("0 ");
+                sb.append("0 ");
                 stack.push(new Node(m, i));
             } else{
                 while(true){
                     if(stack.isEmpty()){
-                        System.out.print("0 ");
+                        sb.append("0 ");
                         stack.push(new Node(m, i));
                         break;
                     }
@@ -33,7 +40,7 @@ public class BJ2493 {
                     Node node = stack.peek();
 
                     if(node.num > m){
-                        System.out.print(node.index+ " ");
+                        sb.append(node.index + " ");
                         stack.push(new Node(m, i));
                         break;
                     } else{
@@ -42,8 +49,11 @@ public class BJ2493 {
 
                 }
             }
-
         }
+        bw.write(sb.toString() + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
 class Node{
