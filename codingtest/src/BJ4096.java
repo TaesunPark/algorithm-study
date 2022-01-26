@@ -17,9 +17,7 @@ public class BJ4096 {
                 break;
             }
 
-            if(len > 1 && num == 0){
-                sb.append("0");
-            }
+
 
             while(true) {
                 str = Integer.toString(num);
