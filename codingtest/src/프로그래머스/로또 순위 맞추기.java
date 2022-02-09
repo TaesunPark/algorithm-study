@@ -1,6 +1,6 @@
 package 프로그래머스;
 
-class Solution {
+class 로또 {
     public int[] solution(int[] lottos, int[] win_nums) {
         int[] answer = new int[2];
         int count = 0;
