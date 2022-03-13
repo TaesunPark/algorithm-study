@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 public class BJ15664 {
 
@@ -10,7 +11,7 @@ public class BJ15664 {
     static boolean[] isUsed;
     static int[] array;
     static int[] result;
-    static HashSet hashSet;
+    static Set set = new HashSet<String>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,7 +21,6 @@ public class BJ15664 {
         isUsed = new boolean[10];
         array = new int[n];
         result = new int[10];
-        hashSet = new HashSet();
         String[] b = br.readLine().split(" ");
 
         for (int i=0; i<b.length; i++){
@@ -33,8 +33,8 @@ public class BJ15664 {
     }
     public static void bfs(int k){
         if (k == m){
-            if (!hashSet.contains(result)){
-                hashSet.add(result);
+            if (!set.contains(Arrays.toString(result))){
+                set.add(Arrays.toString(result));
                 for (int i=0; i<m; i++){
                     System.out.print(result[i]+" ");
                 }
@@ -44,13 +44,16 @@ public class BJ15664 {
             return;
         }
 
+        int prev = -1;
+        if (k-1 >= 0){
+            prev = result[k-1];
+        }
+
         for (int i=0; i<n; i++){
-            if (!isUsed[i]){
+            if (!isUsed[i] && prev <= array[i]){
+                prev = array[i];
                 isUsed[i] = true;
-                result[i] = array[i];
-
-                System.out.println(result[i]+"hi");
-
+                result[k] = prev;
                 bfs(k+1);
                 isUsed[i] = false;
             }
