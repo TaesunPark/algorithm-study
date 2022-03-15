@@ -28,6 +28,4 @@ public class BJ11729 {
         func(6-a-b,b,n-1);
     }
 
-
-
 }

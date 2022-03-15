@@ -28,7 +28,6 @@ public class BJ15664 {
         }
 
         Arrays.sort(array);
-
         bfs(0);
     }
     public static void bfs(int k){
