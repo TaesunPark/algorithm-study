@@ -29,11 +29,11 @@ public class BJ15654 {
             array[index++] = Integer.parseInt(st.nextToken());
         }
         Arrays.sort(array);
-        bfs(0);
+        bfs(0, 0);
         System.out.print(sb);
     }
 
-    static public void bfs(int depth){
+    static public void bfs(int depth, int start){
         if (depth == m){
             for (int i=0; i<m; i++){
                 sb.append(result.get(i) + " ");
@@ -41,15 +41,14 @@ public class BJ15654 {
             sb.append("\n");
             return;
         }
+        int tmp = -1;
 
-        for(int i=0; i<n; i++){
-            if (!isUsed[i]){
-                isUsed[i] = true;
-                result.add(array[i]);
-                bfs(result.size());
-                result.remove(result.size()-1);
-                isUsed[i] = false;
-            }
+        for(int i=start; i<n; i++){
+            if (tmp > array[i] || tmp == array[i]) continue;
+            result.add(array[i]);
+            tmp = array[i];
+            bfs(result.size(), i);
+            result.remove(result.size()-1);
         }
 
     }
