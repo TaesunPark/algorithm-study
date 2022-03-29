@@ -32,12 +32,12 @@ public class BJ11650 {
 
         @Override
         public int compareTo(Map o) {
-            if (x < o.x){
+            if (y < o.y){
                 return -1;
-            } else if(x > o.x){
+            } else if(y > o.y){
                 return 1;
             } else{
-                if (y > o.y){
+                if (x > o.x){
                     return 1;
                 } else {
                     return -1;
