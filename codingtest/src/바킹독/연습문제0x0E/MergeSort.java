@@ -6,12 +6,17 @@ public class MergeSort {
     static int[] tmp = new int[1000001];
 
     public static void merge(int st, int en){
-        int mid = (st+en)/2;
+         int mid = (st+en)/2;
+        int lidx = st;
+        int ridx = mid;
 
         for (int i = st; i<en; i++){
-
+            if (ridx == en) tmp[i] = arr[lidx++];
+            else if (lidx == mid) tmp[i] = arr[ridx++];
+            else if (arr[lidx] <= arr[ridx]) tmp[i] = arr[lidx++];
+            else tmp[i] = arr[ridx++];
         }
-        // ...
+        for (int i = st; i<en; i++) arr[i] = tmp[i];
     }
     public static void merge_sort(int st, int en){
         if (st + 1 == en){
