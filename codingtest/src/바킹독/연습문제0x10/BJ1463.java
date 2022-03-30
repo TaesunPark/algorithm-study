@@ -1,53 +1,24 @@
 package 바킹독.연습문제0x10;
-import java.util.Scanner;
-import java.util.Queue;
-import java.util.LinkedList;
 
-public class BJ1463 {
-    static int n;
-    static int count;
-    static Queue<Node> stack;
-    static boolean[] check;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-    public static void main(String[] args) {
+class BJ1463{
+    static int[] dp;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        dp = new int[n+1];
+        dp[0] = 0;
+        dp[1] = 0;
 
-        Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        check = new boolean[n+1];
-        stack = new LinkedList<>();
-
-        stack.add(new Node(n, 0));
-
-        while(!stack.isEmpty()){
-            Node node = stack.remove();
-            int num = node.n;
-
-            if(num == 1){
-                System.out.println(node.count);
-                break;
-            }
-
-            if(!check[num] && num > 1){
-                int count = node.count + 1;
-                check[num] = true;
-
-                if(num % 3 == 0){
-                    stack.add(new Node(num/3,count));
-                }
-
-                if(num % 2 == 0){
-                    stack.add(new Node(num/2,count));
-                }
-                stack.add(new Node(num-1,count));
-            }
+        for (int i=2; i<=n; i++){
+            dp[i] = dp[i-1] + 1;
+            if (i % 2 == 0) dp[i] = Math.min(dp[i], dp[i/2] + 1);
+            if (i % 3 == 0) dp[i] = Math.min(dp[i], dp[i/3] + 1);
         }
-    }
-}
-class Node{
-    int n;
-    int count;
-    public Node(int n, int count){
-        this.n = n;
-        this.count = count;
+        System.out.print(dp[n]);
+
     }
 }
