@@ -41,7 +41,7 @@ public class BJ1932 {
                 }
             }
         }
-        
+
         Arrays.sort(dp[n-1]);
         System.out.print(dp[n-1][n-1]);
     }
