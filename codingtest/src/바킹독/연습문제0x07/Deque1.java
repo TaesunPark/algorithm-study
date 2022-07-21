@@ -1,6 +1,6 @@
 package 바킹독.연습문제0x07;
 
-public class Deque {
+public class Deque1 {
 
     public static int MX = 1000005;
     public static int[] dat = new int[2*MX];
