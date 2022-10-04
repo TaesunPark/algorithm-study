@@ -5,17 +5,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class BJ12851 {
+public class BJ13913 {
     static Queue<Node> queue;
     static int M;
     static int N;
     static int cnt;
     static int cntt = 0;
     static int[] check = new int[100001];
+    static int[] parrent = new int[100001];
     static int tempFirst=0;
     static int min = Integer.MAX_VALUE;
+    
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stringTokenizer = new StringTokenizer(br.readLine());
@@ -23,8 +26,16 @@ public class BJ12851 {
         M = Integer.parseInt(stringTokenizer.nextToken());
         N = Integer.parseInt(stringTokenizer.nextToken());
         bfs(M);
+        Stack<Integer> stack = new Stack<>();
         System.out.println(min);
-        System.out.println(cntt);
+        for (int i=N; i!=M; i=parrent[i]){
+            stack.push(i);
+        }
+        stack.push(M);
+        int size = stack.size();
+        for (int i=0; i<size;i++){
+            System.out.print(stack.pop()+" ");
+        }
     }
 
     public static void bfs(int start){
@@ -38,16 +49,14 @@ public class BJ12851 {
             int nowPos = node.pos;
             cnt = node.num;
 
-            if (nowPos == N && min == cnt){
-                cntt++;
-            } else if(nowPos == N && min > cnt){
-                cntt = 1;
+            if (nowPos == N && min >= cnt){
                 min = cnt;
+                break;
             }
 
             for (int i=0; i<3;i++){
                 int next = nowPos;
-                checked[next] = true;
+
                 if (i == 0){
                     next = nowPos*2;
                 } else if(i == 1){
@@ -62,9 +71,8 @@ public class BJ12851 {
                 }
 
                 if (checked[next] == false) {
-                    if (next == N){
-                        tempFirst = cnt;
-                    }
+                    checked[next] = true;
+                    parrent[next] = nowPos;
                     queue.offer(new Node(next, cnt + 1));
                 }
             }

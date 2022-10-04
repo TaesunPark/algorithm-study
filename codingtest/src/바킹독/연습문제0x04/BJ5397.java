@@ -14,6 +14,7 @@ public class BJ5397 {
         int n;
         String str;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         n = Integer.parseInt(br.readLine());
 
         for(int i=0; i<n; i++){
@@ -39,13 +40,13 @@ public class BJ5397 {
                 }
             }
 
-            StringBuilder sb = new StringBuilder();
             for(char s : list) {
                 sb.append(s);
             }
-            System.out.println(sb.toString());
+            sb.append("\n");
         }
 
+        System.out.print(sb);
 
     }
 }

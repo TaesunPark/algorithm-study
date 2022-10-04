@@ -14,6 +14,7 @@ public class BJ5430 {
         StringBuilder sb = new StringBuilder();
         int loopCnt = Integer.parseInt(br.readLine());
         boolean isR;
+
         for (int i=0; i<loopCnt; i++){
             isR = false;
             String cmd = br.readLine();

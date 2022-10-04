@@ -13,6 +13,7 @@ public class BJ1697 {
     public static int N;
     public static int[] array = new int[100001];
     public static Queue<Integer> queue;
+    public static int[] origin;
     public static void main(String[] args) throws IOException {
         queue = new LinkedList<>();
 
@@ -20,6 +21,7 @@ public class BJ1697 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         K = Integer.parseInt(st.nextToken());
         N = Integer.parseInt(st.nextToken());
+        origin = new int[100001];
         if (K == N){
             System.out.print("0");
             return;
@@ -42,16 +44,19 @@ public class BJ1697 {
                 }
                 if (value == N){
                     System.out.println(array[tmp]);
-                    return;
+                    break;
                 }
                 if (value >= 0 && value < 100001 && array[value] == 0){
                     queue.add(value);
                     array[value] = array[tmp] + 1;
+                    origin[value] = tmp;
                 }
             }
 
         }
-        System.out.print(array[N]);
+
+        //System.out.println(array[N]);
+
     }
 
 }

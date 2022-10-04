@@ -18,6 +18,7 @@ public class RE6198 {
             while (!stack.isEmpty() && stack.peek() <= num){
                 stack.pop();
             }
+
             result += stack.size();
             stack.push(num);
         }

@@ -25,8 +25,6 @@ public class BJ20162 {
                 result += list[i];
             }
         }
-
         System.out.println(result);
-
     }
 }

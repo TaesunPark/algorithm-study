@@ -53,6 +53,7 @@ class Main {
         for(Character chr:list){
             bw.write(chr);
         }
+
         bw.flush();
         bw.close();
     }

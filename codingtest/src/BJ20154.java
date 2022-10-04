@@ -15,9 +15,12 @@ public class BJ20154 {
         for (int i=0 ; i<str.length(); i++){
             deque.add(array[str.charAt(i)- 'A']);
         }
+
         int a,b;
         int size = deque.size();
+
         while (true){
+
             if (size == 1)
                 break;
 
@@ -32,6 +35,7 @@ public class BJ20154 {
             }
             size = deque.size();
         }
+
         int result = deque.poll();
 
         if(result % 2 == 1)

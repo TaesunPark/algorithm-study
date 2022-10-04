@@ -10,9 +10,9 @@ public class RE2493 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         Stack<Node> stack = new Stack<>();
-        Stack<Integer> results = new Stack<>();
+
         int loopCnt = Integer.parseInt(br.readLine());
-        int[] list = new int[loopCnt];
+
         StringTokenizer st = new StringTokenizer(br.readLine());
         StringBuilder sb = new StringBuilder();
 

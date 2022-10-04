@@ -29,6 +29,7 @@ public class BJ10815 {
                 sb.append("0 ");
             }
         }
+
         System.out.print(sb);
     }
 }
