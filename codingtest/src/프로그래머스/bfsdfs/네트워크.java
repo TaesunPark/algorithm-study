@@ -14,7 +14,7 @@ class Solution3 {
             if(check[i] == true){
                 continue;
             }
-            
+
             answer += bfs(computers, i);
         }
         return answer;
