@@ -48,6 +48,7 @@ public class BJ11403 {
                 if(check[i] == true || map[index][i] == 0) continue;
                 queue.add(i);
                 check[i] = true;
+                System.out.println(i);
                 result[idx][i] = 1;
             }
         }
