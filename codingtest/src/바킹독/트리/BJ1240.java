@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class BJ1241 {
+public class BJ1240 {
 
     public static ArrayList<ArrayList<Node>> list;
     public static boolean[] check;
