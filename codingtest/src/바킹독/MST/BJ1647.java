@@ -4,35 +4,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class BJ16398 {
-    public static int[] p;
-    public static int[][] map;
+public class BJ1647 {
+
     public static ArrayList<Node> list;
-    public static int n;
+    public static int[] p;
 
     public static void main(String[] args){
-        long result = 0;
-        Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-
-        map = new int[n][n];
+        int result = 0;
         list = new ArrayList<>();
-        p = new int[n];
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
 
-        for(int i = 0; i < n; i++){
+        p = new int[n + 1];
+
+        for(int i = 0; i <= n; i++){
             p[i] = i;
         }
 
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                int value = sc.nextInt();
-                if(i == j) continue;
-                list.add(new Node(i, j, value));
-            }
+        for(int i = 0; i < m; i++){
+            int v1 = sc.nextInt();
+            int v2 = sc.nextInt();;
+            int w = sc.nextInt();;
+
+            list.add(new Node(v1, v2, w));
         }
 
         Collections.sort(list, (o1, o2) -> o1.w - o2.w);
-
+        int cur = 0;
         for(int i = 0; i < list.size(); i++){
             int start = find(list.get(i).start);
             int end = find(list.get(i).end);
@@ -45,7 +44,9 @@ public class BJ16398 {
                 p[end] = start;
             }
             result += list.get(i).w;
+            cur = i;
         }
+        result -= list.get(cur).w;
         System.out.println(result);
     }
 
@@ -66,7 +67,6 @@ public class BJ16398 {
             this.end = end;
             this.w = w;
         }
+
     }
-
-
 }
