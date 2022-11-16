@@ -54,16 +54,15 @@ public class BJ2178 {
                 int dx_x = x + dx[i];
                 int dy_y = y + dy[i];
 
-                //System.out.println(n);
-                //System.out.println(m);
                 if(dx_x < 0 || dx_x >= m || dy_y < 0 || dy_y >= n) continue;
-                //System.out.println(check[dy_y][dx_x]);
+
                 if(map[dy_y][dx_x] == 0 ||  check[dy_y][dx_x] == true) continue;
 
                 queue.add(new Node(dx_x, dy_y, cnt + 1));
                 check[dy_y][dx_x] = true;
             }
         }
+
         return 0;
     }
 

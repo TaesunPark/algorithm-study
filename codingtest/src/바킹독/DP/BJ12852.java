@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class BJ12852 {
+
     public static void main(String[] args) {
         int n;
         int tmpN;
