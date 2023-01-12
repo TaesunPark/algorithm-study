@@ -33,6 +33,8 @@ public class BJ14499 {
         for (int i = 0; i < k; i++){
             int cmd = sc.nextInt();
 
+            printMap();
+
             switch (cmd){
                 case 1:
                     east();

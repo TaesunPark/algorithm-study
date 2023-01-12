@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class BJ11559 {
 
-    public static char[][] map1;
+    public static char[][] map1; // map
     public static char[][] map2;
     public static boolean[][] check;
     public static int flag;
