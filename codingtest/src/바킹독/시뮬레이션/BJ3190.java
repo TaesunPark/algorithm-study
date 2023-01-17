@@ -10,6 +10,7 @@ public class BJ3190 {
     public static boolean[][] check;
     public static Queue<Node> queue;
     public static Queue<Tail> tail;
+
     public static int[] dx = {0,1,0,-1};
     public static int[] dy = {-1,0,1,0};
     public static int dir;
@@ -72,6 +73,7 @@ public class BJ3190 {
             now_loc[1] = now_loc[1] + dy[dir]; // y
 
             if (now_loc[0] < 0 || now_loc[0] >= n || now_loc[1] < 0 || now_loc[1] >= n) break;
+
             if (map[now_loc[1]][now_loc[0]] == 2) break;
 
             if (map[now_loc[1]][now_loc[0]] == 1){
@@ -86,7 +88,6 @@ public class BJ3190 {
         }
 
         System.out.print(time + 1);
-
     }
 
     public static class Node{
