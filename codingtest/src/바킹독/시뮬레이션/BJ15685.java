@@ -54,6 +54,7 @@ public class BJ15685 {
     }
 
     public static void curve(int cnt){
+
         if (cnt == g) return;
 
         tmp2 = (Stack<Node>) stack.clone();
