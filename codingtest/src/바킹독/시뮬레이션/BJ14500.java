@@ -49,9 +49,6 @@ public class BJ14500 {
         start();
 
         System.out.print(max);
-        // rotate() * 4;
-        // leftRotate() * 2;
-        // topRotate() * 2;
     }
 
     public static void start(){
@@ -110,8 +107,7 @@ public class BJ14500 {
             idx++;
         }
     }
-
-
+    
     public static int[][] copy(int[][] tet){
         int[][] tmp = new int[N][M];
 
