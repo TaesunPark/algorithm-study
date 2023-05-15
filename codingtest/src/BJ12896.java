@@ -29,7 +29,7 @@ public class BJ12896 {
 
         max = -1;
         visited = new boolean[n + 1];
-        dfs(node, 0);
+        dfs(0, 0);
         System.out.println((1+max)/2);
     }
 

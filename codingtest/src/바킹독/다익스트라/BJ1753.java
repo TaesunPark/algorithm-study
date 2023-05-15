@@ -6,66 +6,59 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class BJ1753 {
-    public static int N;
-    public static int M;
-    public static ArrayList<ArrayList<Node>> list;
-    public static int[] d;
 
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        N = sc.nextInt();
-        M = sc.nextInt();
-        int K = sc.nextInt();
+    static ArrayList<ArrayList<Node>> list;
+    static int[] d;
+    public static void main(String[] args) {
         list = new ArrayList<>();
-        d = new int[N + 1];
+        Scanner sc = new Scanner(System.in);
+        int V, E, start;
+        V = sc.nextInt();
+        E = sc.nextInt();
+        start = sc.nextInt();
+
+        for (int i = 0; i <= V; i++){
+            list.add(new ArrayList<>());
+        }
+
+        for (int i = 0; i < E; i++){
+            int st = sc.nextInt();
+            int en = sc.nextInt();
+            int dis = sc.nextInt();
+
+            list.get(st).add(new Node(en, dis));
+        }
         Arrays.fill(d, Integer.MAX_VALUE);
-
-        for(int i = 0; i <= N; i++){
-            list.add(i, new ArrayList<Node>());
-        }
-
-        for(int i = 1; i <= M; i++){
-            int v1 = sc.nextInt();
-            int v2 = sc.nextInt();
-            int w = sc.nextInt();
-
-            list.get(v1).add(new Node(v2, w));
-        }
-
-        di(K);
-        for(int i = 1; i<=N; i++){
-            if(d[i] == Integer.MAX_VALUE){
-                System.out.println("INF");
-            } else{
-                System.out.println(d[i]);
-            }
-        }
+        dij(start);
     }
-    public static void di(int st){
-        PriorityQueue<Node> pq = new PriorityQueue<>();
-        d[st] = 0;
-        pq.add(new Node(st, d[st]));
 
-        while(!pq.isEmpty()){
+    public static void dij(int start){
+        d[start] = 0;
+        PriorityQueue<Node> pq = new PriorityQueue<>();
+        pq.add(new Node(start, d[start]));
+
+        while (!pq.isEmpty()){
             Node node = pq.poll();
-            int dis = node.dis;
-            int end = node.end;
+            int dis = node.dis; // 거리
+            int end = node.end; // 오는 점
+            // 1, 0
 
             if(d[end] != dis) continue;
 
-            for(Node tmp : list.get(end)){
-                // 최단 거리 비교
-                if(d[tmp.end] <= tmp.dis + d[end]) continue;
-                d[tmp.end] = tmp.dis + d[end];
+            for (Node tmp : list.get(end)){
+                if (d[tmp.end] <= dis + d[end]) continue;
+                d[tmp.end] = dis + d[end];
                 pq.add(new Node(tmp.end, d[tmp.end]));
             }
 
         }
+
     }
 
     public static class Node implements Comparable<Node>{
-        public int dis;
-        public int end;
+
+        int end;
+        int dis;
 
         public Node(int end, int dis){
             this.end = end;
@@ -73,8 +66,9 @@ public class BJ1753 {
         }
 
         @Override
-        public int compareTo(Node node){
-            return this.dis - node.dis;
+        public int compareTo(Node o) {
+            return this.dis - o.dis;
         }
     }
+
 }

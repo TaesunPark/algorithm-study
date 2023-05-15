@@ -7,7 +7,7 @@ public class 시험_감독 {
     static int B, C;
     static int[] list;
     static long result;
-    
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

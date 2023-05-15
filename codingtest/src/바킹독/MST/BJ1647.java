@@ -32,6 +32,7 @@ public class BJ1647 {
 
         Collections.sort(list, (o1, o2) -> o1.w - o2.w);
         int cur = 0;
+
         for(int i = 0; i < list.size(); i++){
             int start = find(list.get(i).start);
             int end = find(list.get(i).end);
@@ -46,6 +47,7 @@ public class BJ1647 {
             result += list.get(i).w;
             cur = i;
         }
+
         result -= list.get(cur).w;
         System.out.println(result);
     }

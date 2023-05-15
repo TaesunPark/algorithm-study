@@ -7,49 +7,48 @@ import java.util.Scanner;
 
 public class BJ11724 {
 
-    public static ArrayList<ArrayList<Integer>> list;
-    public static Queue<Integer> queue;
-    public static boolean[] check;
-
+    static ArrayList<ArrayList<Integer>> list;
     public static void main(String[] args) {
+        int N, M;
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        int result = 0;
-        check = new boolean[n+1];
+        N = sc.nextInt();
+        M = sc.nextInt();
         list = new ArrayList<>();
-        for(int i=0; i<n+1; i++){
+        boolean[] check = new boolean[N + 1];
+
+        for (int i = 0; i <=N; i++){
             list.add(i, new ArrayList<>());
         }
 
-        for (int i=0; i<m; i++){
+        for (int i = 0; i < M; i++){
             int v1 = sc.nextInt();
             int v2 = sc.nextInt();
-
             list.get(v1).add(v2);
             list.get(v2).add(v1);
         }
 
-        for(int i=1; i<=n; i++){
-            if(check[i] == true) continue;
-            bfs(i);
-            result = result + 1;
-        }
-        System.out.print(result);
-    }
-    public static void bfs(int i){
-        queue = new LinkedList<>();
-        queue.add(i);
-        check[i] = true;
+        Queue<Integer> queue = new LinkedList<>();
+        int result = 0;
 
-        while(!queue.isEmpty()){
-            int idx = queue.poll();
+        for (int i = 1; i <= N; i++){
+            if (check[i] == true) continue;
+            result++;
+            queue.add(i);
+            check[i] = true;
 
-            for(int x : list.get(idx)){
-                if(check[x] == true) continue;
-                check[x] = true;
-                queue.add(x);
+            while (!queue.isEmpty()){
+                int value = queue.poll();
+
+                for (int values : list.get(value)){
+                    if (check[values] == true) continue;
+                    queue.add(values);
+                    check[values] = true;
+                }
             }
         }
+
+        System.out.print(result);
+
     }
+
 }

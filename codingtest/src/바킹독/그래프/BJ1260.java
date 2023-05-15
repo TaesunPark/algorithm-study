@@ -1,73 +1,48 @@
 package 바킹독.그래프;
 
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class BJ1260 {
-    public static Queue<Integer> queue;
-    public static ArrayList<ArrayList<Integer>> list;
-    public static StringBuilder sb1;
-    public static StringBuilder sb2;
-    public static boolean[] check1;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N, M, V;
 
-    public static void main(String[] args) {
-        list = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        int st = sc.nextInt();
-        sb1 = new StringBuilder();
-        sb2 = new StringBuilder();
-        check1 = new boolean[n+1];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        V = Integer.parseInt(st.nextToken());
 
-        for(int i = 0; i <= n; i++){
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+        for (int i = 0; i <= N; i++){
             list.add(i, new ArrayList<>());
         }
 
-        for(int i = 0; i < m; i++){
-            int v1 = sc.nextInt();
-            int v2 = sc.nextInt();
+        for (int i = 0 ; i < M; i++){
+            String[] cmd = br.readLine().split(" ");
+            int v1 = Integer.parseInt(cmd[0]);
+            int v2 = Integer.parseInt(cmd[1]);
             list.get(v1).add(v2);
             list.get(v2).add(v1);
         }
-
-        for(int i=1; i<=n; i++){
-            Collections.sort(list.get(i));
-        }
-
-
-        bfs(st, n);
-        dfs(st);
-        System.out.println(sb1);
-        System.out.println(sb2);
-    }
-    public static void bfs(int idx, int n){
-        boolean[] check = new boolean[n+1];
-        queue = new LinkedList<>();
-        queue.add(idx);
-        sb2.append(idx + " ");
-        check[idx] = true;
-
-        while(!queue.isEmpty()){
-            int idx2 = queue.poll();
-
-            for(int x : list.get(idx2)){
-                if(check[x] == true) continue;
-                check[x] = true;
-                queue.add(x);
-                sb2.append(x + " ");
-            }
-        }
+        StringBuilder sb = new StringBuilder();
+        boolean[] check = new boolean[N + 1];
+        dfs(list, V, sb, check);
+        System.out.print(sb);
     }
 
-    public static void dfs(int idx){
+    public static void dfs(ArrayList<ArrayList<Integer>> list, int V, StringBuilder sb, boolean[] check){
 
-        check1[idx] = true;
-        sb1.append(idx + " ");
+        check[V] = true;
+        sb.append(V);
 
-        for(int x : list.get(idx)){
-            if(check1[x] == true) continue;
-            dfs(x);
+        for (int value : list.get(V)){
+            if (true == check[value]) continue;
+            dfs(list, value, sb, check);
         }
     }
-
 }

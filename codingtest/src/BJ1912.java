@@ -19,7 +19,7 @@ public class BJ1912 {
 
         d[0] = list[0];
         max = d[0];
-        
+
         for (int i = 1; i < n; i++){
             d[i] = Math.max(d[i - 1] + list[i], list[i]);
             max = Math.max(d[i], max);
