@@ -17,8 +17,10 @@ public class BJ11058 {
         dp[5] = 5;
 
         for (int i = 6; i <= 100; i++){
-            dp[i] = Math.max(dp[i-3] * 2, dp[i-4] * 3);
-            dp[i] = Math.max(dp[i-5] * 4, dp[i]);
+            dp[i] = dp[i-1] + 1;
+            for (int j = 3; j <=i; j++){
+                dp[i] = Math.max(dp[i], (j-1)*dp[i-j]);
+            }
         }
 
         System.out.print(dp[N]);
