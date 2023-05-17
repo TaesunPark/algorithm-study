@@ -6,8 +6,7 @@ import java.util.StringTokenizer;
 // 평범한 배낭
 public class BJ12865 {
     public static void main(String[] args) throws IOException {
-        int N, W; 
-
+        int N, W;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
